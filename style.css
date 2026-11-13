@@ -31,3 +31,8 @@ body{font-family:Pretendard,system-ui,-apple-system,'Apple SD Gothic Neo','Malgu
   .section-intro h2{font-size:clamp(21px,6vw,23px);letter-spacing:-.06em}
   .tab{gap:2px;padding:7px 1px}
 }
+@media(max-width:520px){
+  .module-nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+  .tab{min-height:52px;flex-direction:row;gap:5px;font-size:12px;padding:7px 3px}
+  .tab>span:last-child{overflow-wrap:normal;text-wrap:balance}
+}
