@@ -13,3 +13,21 @@
 @media(max-width:760px){.pickle-examples{grid-template-columns:1fr}}
 .pickle-panel{padding-top:24px}
 .pickle-panel .pickle-card{margin-top:0}
+
+/* Locally hosted font keeps the same typography in KakaoTalk and mobile browsers. */
+@font-face{font-family:Pretendard;src:url('assets/PretendardVariable.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+body{font-family:Pretendard,system-ui,-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+.hero h1,.section-intro h2,.panel-card h3,.app-card h3,.magic-title{word-break:keep-all;text-wrap:balance}
+.module-panel p,.module-panel li,.hero-description,.tab>span:last-child{word-break:keep-all;overflow-wrap:break-word;text-wrap:pretty}
+@media(max-width:760px){
+  .hero h1{letter-spacing:-.065em}
+  .hero-description{letter-spacing:-.025em}
+  .tab>span:last-child{letter-spacing:-.045em}
+  .module-panel p,.module-panel li{letter-spacing:-.015em}
+}
+@media(max-width:390px){
+  .hero h1{font-size:clamp(26px,7.5vw,29px);line-height:1.25}
+  .hero h1 span{display:block}
+  .section-intro h2{font-size:clamp(21px,6vw,23px);letter-spacing:-.06em}
+  .tab{gap:2px;padding:7px 1px}
+}
