@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#6854bf" />
+  <meta name="description" content="영통구청 직원 AI 활용 실습: 핵심 질문 3개, 보도자료 AI 비서, Gemini Canvas 바이브코딩" />
+  <title>영통구청 AI 활용 실습 | 꿀쌤 김은정</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="data.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <header class="hero">
+    <div class="hero-inner content-width">
+      <div class="hero-orbit orbit-one" aria-hidden="true"></div><div class="hero-orbit orbit-two" aria-hidden="true"></div>
+      <p class="eyebrow"><span class="eyebrow-dot"></span> 2026. 11. 18. · 영통구청 직원 특강</p>
+      <h1>영통구청 <span>AI 활용 실습</span></h1>
+      <p class="hero-description">질문을 잘하는 방법부터 나만의 보도자료 AI 비서,<br class="desktop-only" /> 직접 작동하는 작은 앱 만들기까지!</p>
+      <div class="hero-metrics" aria-label="오늘의 실습 목표">
+        <span>💬 핵심 질문 3개</span><span>🗂️ 보도자료 AI 비서 1개</span><span>✨ 내 앱 1개</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="content-width">
+    <div class="module-nav" aria-label="강의 실습 메뉴" role="tablist">
+      <button id="tab-ask" class="tab active" data-tab="ask" role="tab" aria-controls="panel-ask" aria-selected="true"><span class="tab-number">01</span><span>AI에게 질문받기</span></button>
+      <button id="tab-press" class="tab" data-tab="press" role="tab" aria-controls="panel-press" aria-selected="false"><span class="tab-number">02</span><span>보도자료 AI 비서</span></button>
+      <button id="tab-apps" class="tab" data-tab="apps" role="tab" aria-controls="panel-apps" aria-selected="false"><span class="tab-number">03</span><span>나도 앱 개발자!</span></button>
+      <button id="tab-pickle" class="tab" data-tab="pickle" role="tab" aria-controls="panel-pickle" aria-selected="false"><span class="tab-number">04</span><span>피클 소개</span></button>
+    </div>
+
+    <section class="module-panel" id="panel-ask" role="tabpanel" aria-labelledby="tab-ask">
+      <div class="section-intro">
+        <div class="section-kicker"><span class="step-chip">STEP 01</span><span>AI와 생각하기</span></div>
+        <h2>질문이 막힐 땐, <em>AI에게 먼저 질문받자!</em></h2>
+        <p>결과보고서, 사업계획서, 행사 기획… 처음부터 완벽하게 써달라고 할 필요 없어. AI에게 상황을 설명하고 <strong>핵심 질문 3개</strong>를 요청해 봐.</p>
+      </div>
+      <div class="feature-card magic-card">
+        <h3 class="magic-title">AI가 나에게 질문하게 하자!</h3>
+        <p>질문을 잘 쓰기 어렵다면, 먼저 질문을 받아보세요.</p>
+        <div class="magic-quote" id="question-short"></div>
+        <button type="button" class="button button-primary" id="copy-question-short">📋 핵심 문장 복사하기</button>
+      </div>
+      <div class="two-col">
+        <article class="panel-card">
+          <div class="card-topline"><span class="mini-icon">📝</span><h3>행정업무용 확장 프롬프트</h3></div>
+          <p>보고서·행사계획 등 어떤 업무에도 응용 가능해.</p>
+          <div class="prompt-preview" id="question-full"></div>
+          <button class="button button-outline" id="copy-question-full" type="button">확장 프롬프트 복사</button>
+        </article>
+        <article class="panel-card">
+          <div class="card-topline"><span class="mini-icon">💡</span><h3>활용 예: 마을리빙랩 결과보고서</h3></div>
+          <ol class="compact-steps">
+            <li>결과보고 목적과 서식·사업 배경을 AI에 제공해요.</li>
+            <li>AI가 핵심 질문을 하면 답변해요.</li>
+            <li>답변을 반영해 결과보고서 초안을 요청해요.</li>
+            <li>담당자가 실제 사실과 표현을 검토·수정해요.</li>
+          </ol>
+          <p class="hint">핵심은 <strong>AI가 질문하게 하고 함께 방향을 잡는 것!</strong></p>
+        </article>
+      </div>
+      <article class="panel-card example-card" aria-labelledby="user-instruction-title">
+        <div class="card-topline"><span class="mini-icon" aria-hidden="true">💬</span><h3 id="user-instruction-title">답변 뒤에 후속 질문 3개 받기</h3></div>
+        <p>아래 한국어 지침을 새 ChatGPT 대화에 붙여넣고, 이어서 업무 질문을 해 봐. 답변 끝에 Q1·Q2·Q3가 나오는지 확인해.</p>
+        <div class="prompt-preview" id="user-instruction-recommended"></div>
+        <div class="button-row">
+          <button class="button button-primary" id="copy-user-instruction-recommended" type="button">📋 한국어 권장 지침 복사</button>
+          <button class="button button-outline" id="copy-user-instruction-original" type="button">영문 원문 전체 복사</button>
+        </div>
+        <details class="accordion"><summary>제공된 영문 원문 전체 보기</summary><pre class="full-prompt" id="user-instruction-original"></pre></details>
+        <div class="note warning-note"><strong>사용 범위</strong><span>영문 원문은 참고용이야. 공직 업무에서는 사실과 출처를 확인할 수 있는 한국어 권장 지침을 먼저 사용해 줘. 사용자 지침은 여러 대화에 적용될 수 있으니 보도자료 프로젝트 지침과 구분해서 관리해.</span></div>
+        <p class="small-message">계속 사용하려면 ChatGPT의 설정 → 개인화에서 사용자 지침을 찾아 저장할 수 있어. 화면 구성은 기기마다 다를 수 있어. <a href="https://learn.chatgpt.com/docs/personalize" target="_blank" rel="noopener noreferrer">OpenAI 사용 안내 보기 ↗</a></p>
+      </article>
+      <div class="note neutral-note"><strong>기억할 것</strong><span>AI가 쓴 결과물은 초안이야. 실제 사업의 사실관계·수치·표현을 담당자가 꼭 확인해야 해.</span></div>
+      <div class="next-area"><button type="button" class="button button-next" data-goto="press">다음 실습: 보도자료 AI 비서 만들기 <span aria-hidden="true">→</span></button></div>
+    </section>
+
+    <section class="module-panel" id="panel-press" role="tabpanel" aria-labelledby="tab-press" hidden>
+      <div class="section-intro">
+        <div class="section-kicker"><span class="step-chip">STEP 02</span><span>업무 비서 만들기</span></div>
+        <h2>한 번 만들어 두면 계속 쓰는 <em>보도자료 AI 비서</em></h2>
+        <p>ChatGPT <strong>프로젝트</strong>를 만들고 꿀쌤이 준비한 <strong>수원시 영통구 보도자료 AI비서 운영 지침 원문</strong>을 넣어 보자.</p>
+      </div>
+      <div class="section-action-bar"><span class="action-instruction">먼저 ChatGPT에 로그인해 줘.</span><a class="button button-primary" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ChatGPT 열기 ↗</a></div>
+      <div class="steps-row" aria-label="보도자료 AI 비서 만들기 5단계">
+        <div><b>1</b><span>로그인</span></div><div><b>2</b><span>새 프로젝트</span></div><div><b>3</b><span>지침 설정</span></div><div><b>4</b><span>PDF 2개 업로드</span></div><div><b>5</b><span>포스터 첨부·검토</span></div>
+      </div>
+      <div class="two-col press-columns">
+        <article class="panel-card primary-panel">
+          <div class="card-overline">프로젝트 지침 · 원문 전체 포함</div>
+          <div class="card-topline"><span class="mini-icon">🗂️</span><h3>수원시 영통구 보도자료 AI비서</h3></div>
+          <p>프로젝트 이름을 <strong>나의 보도자료 작성 비서</strong>로 입력하고, 아래 버튼으로 지침 <strong>전체</strong>를 복사해서 프로젝트 설정의 <strong>지침</strong>에 붙여넣어.</p>
+          <div class="button-row">
+            <button class="button button-primary" type="button" id="copy-press">📋 보도자료 프로젝트 지침 전체 복사</button>
+            <button class="button button-outline" type="button" id="download-press">TXT 다운로드</button>
+          </div>
+          <details class="accordion" id="press-details"><summary>지침 원문 전체 펼쳐서 보기 <span aria-hidden="true">⌄</span></summary><pre class="full-prompt" id="press-full"></pre></details>
+          <p class="small-message">지침의 제목·기사체·역피라미드 구성·관계자 발언 금지·사실 검증 규칙이 모두 포함돼 있어. 요약본이 아니야.</p>
+        </article>
+        <article class="panel-card">
+          <div class="card-overline">프로젝트 파일 · PDF 소스 2개</div>
+          <div class="card-topline"><span class="mini-icon">📚</span><h3>소스1·소스2를 프로젝트에 올리기</h3></div>
+          <p>아래 PDF를 각각 내려받아 ChatGPT 프로젝트의 파일에 직접 업로드해 줘. 지침을 복사하는 것과는 별도 단계야.</p>
+          <div class="button-row">
+            <a class="button button-outline" href="assets/source1_press_release_form.pdf" download="00부서 보도자료.pdf">소스1(보도자료서식) 다운로드</a>
+            <a class="button button-outline" href="assets/source2_press_release_guidelines.pdf" download="보도자료 작성요령 및 e-수원뉴스 등록매뉴얼.pdf">소스2(보도자료작성요령) 다운로드</a>
+          </div>
+          <div class="note neutral-note"><strong>업로드 순서</strong><span>두 PDF는 프로젝트의 참고 파일로 올리고, 아래 포스터 이미지는 보도자료를 요청하는 대화에 첨부해 줘.</span></div>
+        </article>
+      </div>
+      <article class="panel-card example-card">
+        <div class="card-topline"><span class="mini-icon">🖼️</span><h3>포스터 이미지로 보도자료 작성하기</h3><span class="pill training-pill">사전 홍보 문장 연습</span></div>
+        <p>포스터 이미지를 내려받아 방금 만든 프로젝트의 대화에 첨부해 줘. 아래 요청문은 복사하거나 TXT 파일로 내려받아 함께 입력할 수 있어.</p>
+        <img class="practice-poster" src="assets/press_practice_poster.png" alt="제12회 교통정책발전포럼 실습용 행사 포스터" width="513" height="725" loading="lazy" />
+        <div class="button-row">
+          <a class="button button-outline" href="assets/press_practice_poster.png" download="보도자료작성_실습포스터.png">포스터 이미지 다운로드</a>
+          <a class="button button-outline" href="assets/press_practice_request.txt" download="보도자료작성_실습요청문.txt">실습 요청문 TXT 다운로드</a>
+        </div>
+        <div class="prompt-preview" id="poster-practice-prompt"></div>
+        <button class="button button-primary" type="button" id="copy-poster-prompt">📋 실습 요청문 복사</button>
+        <p class="small-message">이 포스터는 사전 홍보 글쓰기 연습 자료야. 실제 배포 전에는 행사 일정과 확인되지 않은 사실을 검토해 줘.</p>
+      </article>
+      <div class="note safety-note"><strong>공직자 AI 활용 유의사항</strong><span>개인정보·비공개 행정정보·민감한 민원자료는 실습에 입력하지 말자. AI가 생성한 보도자료는 사실·담당자 정보·공식 서식을 최종 확인하고 사용해야 해.</span></div>
+      <div class="next-area"><button type="button" class="button button-next" data-goto="apps">다음 실습: 나도 앱 개발자! <span aria-hidden="true">→</span></button></div>
+    </section>
+
+    <section class="module-panel" id="panel-apps" role="tabpanel" aria-labelledby="tab-apps" hidden>
+      <div class="section-intro">
+        <div class="section-kicker"><span class="step-chip">STEP 03</span><span>첫 웹앱 만들기</span></div>
+        <h2>이제 내가 만든다! <em>첫 번째 미니 앱</em></h2>
+        <p>내 마음에 드는 앱을 고르고 프롬프트를 복사해 <strong>Gemini Canvas</strong>에 붙여넣어. 미리보기에서 눌러보고 한 가지 기능을 바꾸면 성공!</p>
+      </div>
+      <div class="section-action-bar"><span class="action-instruction">Gemini 입력창에서 <strong>Canvas</strong>를 선택해 줘.</span><a class="button button-primary" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">Gemini Canvas 열기 ↗</a></div>
+      <div class="steps-row" aria-label="바이브코딩 5단계">
+        <div><b>1</b><span>앱 고르기</span></div><div><b>2</b><span>복사</span></div><div><b>3</b><span>붙여넣기</span></div><div><b>4</b><span>미리보기</span></div><div><b>5</b><span>수정하기</span></div>
+      </div>
+      <div class="app-toolbar">
+        <label class="searchbox"><span class="visually-hidden">앱 검색</span><span aria-hidden="true">⌕</span><input id="app-search" type="search" placeholder="어떤 앱을 만들까? 검색" autocomplete="off" /></label>
+        <div class="filters" aria-label="앱 종류 필터" role="group">
+          <button type="button" class="filter active" data-filter="all" aria-pressed="true">전체 6종</button>
+          <button type="button" class="filter" data-filter="업무" aria-pressed="false">업무형</button>
+          <button type="button" class="filter" data-filter="생활·재미" aria-pressed="false">생활·재미형</button>
+          <button type="button" class="filter" data-filter="favorite" aria-pressed="false">★ 즐겨찾기</button>
+        </div>
+      </div>
+      <div id="app-grid" class="app-grid" aria-live="polite"></div>
+      <div id="app-empty" class="empty-state" hidden>찾는 앱이 없어. 다른 검색어나 '전체 6종'을 선택해 봐!</div>
+      <article class="panel-card trouble-card">
+        <div class="card-topline"><span class="mini-icon">🛠️</span><h3>앱이 잘 작동하지 않을 때</h3></div>
+        <p>아래 문장을 복사해서 같은 Gemini Canvas 대화창에 넣어 봐.</p>
+        <div class="prompt-preview" id="error-prompt"></div>
+        <button type="button" class="button button-outline" id="copy-error">오류 수정 문장 복사</button>
+      </article>
+      <div class="note neutral-note"><strong>오늘의 성공 기준</strong><span>① 앱 화면 보기 → ② 버튼이나 기능 하나 실행하기 → ③ 말로 한 가지 수정하기. 앱을 인터넷에 배포하는 단계는 오늘의 필수 과제가 아니야.</span></div>
+    </section>
+    <section class="module-panel pickle-panel" id="panel-pickle" role="tabpanel" aria-labelledby="tab-pickle" hidden>
+      <article class="app-card pickle-card" aria-labelledby="pickle-title">
+        <div class="app-card-head">
+          <div class="app-emoji" aria-hidden="true">🤖</div>
+          <div class="app-card-title">
+            <h3 id="pickle-title">나만의 AI비서, 피클(Pickle)</h3>
+            <p class="pickle-tagline">“말만 하면 대신 일해 주는 개인 AI비서가 있다고?”</p>
+          </div>
+        </div>
+        <p class="app-description">피클은 단순히 질문에 답하는 것을 넘어 전화, 일정 확인, 메일 관리, 웹사이트 작업 등 다양한 일을 대신 수행할 수 있는 AI 에이전트예요.</p>
+        <p class="pickle-intro">꿀쌤이 실제로 활용하고 있는 사례를 소개합니다!</p>
+        <ul class="pickle-examples" aria-label="꿀쌤의 피클 활용 사례 6가지">
+          <li><strong>① ⏰ 아침 6시 30분 모닝콜</strong><span>정해진 시간에 나를 깨워 주는 모닝콜 비서</span></li>
+          <li><strong>② 📞 지인과 약속시간 조율</strong><span>내 연락처에 있는 지인에게 대신 연락해 약속시간 물어보기</span></li>
+          <li><strong>③ 🎤 강의 기획부터 자료 제작까지</strong><span>강의 내용을 함께 기획하고 슬라이드를 만들어 구글드라이브에 저장하기</span></li>
+          <li><strong>④ 📧 지메일 브리핑</strong><span>받은 메일을 확인하고 중요한 내용을 간단하게 요약해 주기</span></li>
+          <li><strong>⑤ ✉️ 해지 요청 메일 보내기</strong><span>나 대신 서비스 해지 요청 메일 작성하고 발송하기</span></li>
+          <li><strong>⑥ 🛒 쿠팡 장바구니 담기</strong><span>원하는 상품을 찾아 장바구니에 담아 주기</span></li>
+        </ul>
+        <p class="pickle-disclaimer">강사가 직접 사용한 사례예요. 기능은 계정과 상황에 따라 다를 수 있으며, 연결 권한과 실행 결과는 직접 확인해 주세요.</p>
+        <div class="note neutral-note pickle-contact"><strong>💬 피클이 궁금하신가요?</strong><span>관심 있는 직원분은 꿀쌤에게 개인톡 주세요!<br />피클 초대링크를 보내드릴게요. 🍯</span></div>
+      </article>
+    </section>
+  </main>
+  <footer><div class="content-width footer-inner"><span>영통구청 직원 AI 활용 실습자료</span><span>강사 꿀쌤 김은정 · 2026. 11. 18.</span></div></footer>
+  <div class="toast" role="status" aria-live="polite" id="toast"></div>
+  <dialog id="manual-copy-dialog" class="copy-dialog"><h3>직접 선택해서 복사하기</h3><p>자동 복사를 지원하지 않는 환경이야. 아래 문장을 길게 눌러 전체 선택 후 복사해 줘.</p><textarea id="manual-copy-text" readonly></textarea><button type="button" class="button button-primary" id="close-dialog">닫기</button></dialog>
+</body>
+</html>
