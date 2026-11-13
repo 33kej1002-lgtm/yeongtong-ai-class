@@ -36,3 +36,9 @@ body{font-family:Pretendard,system-ui,-apple-system,'Apple SD Gothic Neo','Malgu
   .tab{min-height:52px;flex-direction:row;gap:5px;font-size:12px;padding:7px 3px}
   .tab>span:last-child{overflow-wrap:normal;text-wrap:balance}
 }
+
+.hero-character{position:absolute;display:block;right:16px;bottom:0;width:auto;height:clamp(240px,28vw,310px);z-index:1;pointer-events:none}
+@media(min-width:761px){.hero-description{max-width:min(640px,calc(100% - 240px))}}
+@media(max-width:760px){
+  .hero-character{position:relative;right:auto;bottom:auto;height:clamp(150px,25vw,185px);margin:8px 6px -20px auto}
+}
